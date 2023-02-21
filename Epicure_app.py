@@ -4,7 +4,7 @@ import streamlit as st
 from Allrecipe_search import *  
 from Find_Match import *
 
-st.markdown("<h1 style='text-align: left; color: DarkRed;font-family:Cursive;'>Epicure Compass</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: left; color: DarkRed;font-family:Cursive;'>Epicure's Compass</h1>", unsafe_allow_html=True)
 st.markdown("""<hr style="height:5px;border:none;color:#333;background-color:#333;" /> """, unsafe_allow_html=True)
 #import random
 #st.sidebar.image(random.choice(['Images/compass_image.png','Images/compass_image2.png']))
