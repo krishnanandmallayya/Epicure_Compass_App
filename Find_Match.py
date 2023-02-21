@@ -21,7 +21,7 @@ import numpy as np
     
 
 def get_Archanas_cuisine_sentences(input_cuisine):
-    with open( "Capstone_Data/Indian_regional_cuisines_raw_data.pkl",'rb') as f:
+    with open( "Data/Indian_regional_cuisines_raw_data.pkl",'rb') as f:
         Archanas_data=pickle.load(f)
 
     (cup_sents,spoon_sents,Indian_cup_sents,Indian_spoon_sents,Indian_recipe_list)=Archanas_data
@@ -77,14 +77,14 @@ def find_matches(input_cuisine,input_cup_ingreds, input_spoon_ingreds,level):
         
         if(level=='Play Safe'):
             
-            with open('Capstone_Data/Archana_ingredients_w2v_cup_sg.model', 'rb') as f:
+            with open('Data/Archana_ingredients_w2v_cup_sg.model', 'rb') as f:
                 w2v_cup = pickle.load(f)
-            with open('Capstone_Data/Archana_ingredients_w2v_spoon_sg.model', 'rb') as f:
+            with open('Data/Archana_ingredients_w2v_spoon_sg.model', 'rb') as f:
                 w2v_spoon = pickle.load(f)
             cutoff=0.9
             spoon_weight=1/4
         if(level=='Somewhat Similar'):
-            with open('Capstone_Data/One_million_ingredients_w2v_sg.model', 'rb') as f:
+            with open('Data/One_million_ingredients_w2v_sg.model', 'rb') as f:
                 w2v_model = pickle.load(f)
             
             w2v_cup=w2v_model
@@ -93,7 +93,7 @@ def find_matches(input_cuisine,input_cup_ingreds, input_spoon_ingreds,level):
             spoon_weight=1/4
 
         if(level=='Surprise Me'):
-            with open('Capstone_Data/One_million_ingredients_w2v_sg.model', 'rb') as f:
+            with open('Data/One_million_ingredients_w2v_sg.model', 'rb') as f:
                 w2v_model = pickle.load(f)
             
             w2v_cup=w2v_model
@@ -125,7 +125,7 @@ def find_matches(input_cuisine,input_cup_ingreds, input_spoon_ingreds,level):
 
 
 def Get_Archanas_food_image(recipe_name):
-    with open("Capstone_Data/Archanas_recipe_url.json", "r") as infile:
+    with open("Data/Archanas_recipe_url.json", "r") as infile:
         url_dict=json.load(infile)
         
     recipe_url=url_dict[recipe_name]
