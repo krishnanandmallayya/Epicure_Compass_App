@@ -82,7 +82,7 @@ pyzmq==25.0.0
 regex==2022.10.31
 requests==2.27.1
 rich==12.6.0
-scipy==1.5.4
+scipy==1.10.0
 semver==2.13.0
 Send2Trash==1.8.0
 six==1.16.0
