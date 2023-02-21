@@ -21,7 +21,8 @@ import numpy as np
     
 
 def get_Archanas_cuisine_sentences(input_cuisine):
-    Archanas_data=pickle.load(open( "Capstone_Data/Indian_regional_cuisines_raw_data.pkl", "rb" ))
+    with open( "Capstone_Data/Indian_regional_cuisines_raw_data.pkl",'rb') as f:
+        Archanas_data=pickle.load(f)
 
     (cup_sents,spoon_sents,Indian_cup_sents,Indian_spoon_sents,Indian_recipe_list)=Archanas_data
     
