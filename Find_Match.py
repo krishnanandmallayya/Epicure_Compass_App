@@ -21,7 +21,7 @@ import numpy as np
     
 
 def get_Archanas_cuisine_sentences(input_cuisine):
-    Archanas_data=pickle.load(open( "Data/Indian_regional_cuisines_raw_data.pkl", "rb" ))
+    Archanas_data=pickle.load(open( "Capstone_Data/Indian_regional_cuisines_raw_data.pkl", "rb" ))
 
     (cup_sents,spoon_sents,Indian_cup_sents,Indian_spoon_sents,Indian_recipe_list)=Archanas_data
     
@@ -75,19 +75,26 @@ def find_matches(input_cuisine,input_cup_ingreds, input_spoon_ingreds,level):
     def get_similar_cuisine(input_cup_list,input_spoon_list,level):
         
         if(level=='Play Safe'):
-            w2v_cup=Word2Vec.load('Data/Archana_ingredients_w2v_cup_sg.model')
-            w2v_spoon=Word2Vec.load('Data/Archana_ingredients_w2v_spoon_sg.model')
+            
+            with open('Capstone_Data/Archana_ingredients_w2v_cup_sg.model', 'rb') as f:
+                w2v_cup = pickle.load(f)
+            with open('Capstone_Data/Archana_ingredients_w2v_spoon_sg.model', 'rb') as f:
+                w2v_spoon = pickle.load(f)
             cutoff=0.9
             spoon_weight=1/4
         if(level=='Somewhat Similar'):
-            w2v_model=Word2Vec.load('Data/One_million_ingredients_w2v_sg.model')
+            with open('Capstone_Data/One_million_ingredients_w2v_sg.model', 'rb') as f:
+                w2v_model = pickle.load(f)
+            
             w2v_cup=w2v_model
             w2v_spoon=w2v_model
             cutoff=0.8
             spoon_weight=1/4
 
         if(level=='Surprise Me'):
-            w2v_model=Word2Vec.load('Data/One_million_ingredients_w2v_sg.model')
+            with open('Capstone_Data/One_million_ingredients_w2v_sg.model', 'rb') as f:
+                w2v_model = pickle.load(f)
+            
             w2v_cup=w2v_model
             w2v_spoon=w2v_model
             cutoff=0.6
@@ -117,7 +124,7 @@ def find_matches(input_cuisine,input_cup_ingreds, input_spoon_ingreds,level):
 
 
 def Get_Archanas_food_image(recipe_name):
-    with open("Data/Archanas_recipe_url.json", "r") as infile:
+    with open("Capstone_Data/Archanas_recipe_url.json", "r") as infile:
         url_dict=json.load(infile)
         
     recipe_url=url_dict[recipe_name]
