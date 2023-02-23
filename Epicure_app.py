@@ -19,8 +19,8 @@ names_list=None
 search_item=st.sidebar.text_area('Enter your favorate dish (any cuisine)')
 
 if(search_item):
-    (names_list,hrefs_list) =Get_recipe_names(search_item)
-    if (names_list):
+    try:
+        (names_list,hrefs_list) =Get_recipe_names(search_item)
         fav_item=st.sidebar.radio('Pick your fav item',names_list)
         href_item=hrefs_list[names_list.index(fav_item)]
         
@@ -32,7 +32,7 @@ if(search_item):
         st.markdown("""<hr style="height:5px;border:none;color:#333;background-color:#333;" /> """, unsafe_allow_html=True)
 
     
-    else:
+    except:
         st.sidebar.error('Item not found. Reword your input')
 
 show_map=False
